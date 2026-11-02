@@ -1,0 +1,61 @@
+import { useState } from "react";
+function App() {
+const [username, setUsername] = useState("")
+const [password, setpassword] = useState("")
+const [Status , setStatus]= useState("")
+function funLogin(e){
+    e.preventDefault();
+    if(username==="admin" && password==="admin123")
+        setStatus("Success");
+    else
+
+        setStatus("fail");
+}
+function funlogout(){
+setUsername("");
+setPassword("");
+setStatus("");
+}
+if(Status==="Success"){
+return (
+    <div>
+    <h1>Success page</h1>
+    <br/>
+    <h3>WELCOME {username}!</h3><br/>
+    <button onClick={funLogout}>Logout</button>
+    </div>
+)
+}
+else if(Status==="fail"){
+    return(
+        <div>
+            <h1>Failure page</h1>
+            <br/>
+            <h3>WRONG CREDENTIALS</h3><br/>
+        </div>
+
+    )
+}
+return(
+    <div>
+        <h1>Login Page</h1>
+        <br/>
+        <form onSubmit={funLogin}>
+            <label>Username:</label>
+            <input type="text" value={username}
+            onChange={(e)=>setUsername(e.target.value)}
+            placeholder="enter username"/>
+            <br/>
+            <label>Password:</label>
+            <input type="Password" value={password}
+            onChange={(e)=>setPassword(e.target.value)}
+            placeholder="enter Password"/>
+            <br/>
+            <button type="submit">SUBMIT</button>
+            
+        </form>
+    </div>
+)
+}
+
+export default App;
